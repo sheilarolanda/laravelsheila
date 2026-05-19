@@ -2,10 +2,12 @@
 
 @section('title', 'Program Studi')
 
-@section('content')
 
-<table class="table table-bordered table-hover">
-    <tr>
+@section('content')
+<a href="{{ route('prodi.create') }}" class="btn btn-primary mb-3">Tambah Prodi</a>
+<h1> Data Prodi</h1>
+<table class="table table-bordered table-hover" border="1" cellpadding="10" cellspacing="0" >
+    <tr>@
         <th>No</th>
         <th>Nama Prodi</th>
         <th>Singkatan</th>

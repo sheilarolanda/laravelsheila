@@ -1,30 +1,46 @@
 @extends('main')
 
-@section('title', 'Tambah Fakultas')
+@section('title')
+    <h1>Tambah Prodi</h1>
+@endsection
 
 @section('content')
-    <form action="{{ route('fakultas.store') }}" method="post">
-        <div class="form-group">
-            <label for="nama_fakultas">Nama Fakultas</label>
-            <input type="text" name="nama_fakultas" class="form-control" value="{{ old('nama_fakultas') }}">
-            @error('nama_fakultas')
+    <a href="{{ route('prodi.index') }}" class="btn btn-secondary mb-3">Kembali</a>
+    <form action="{{ route('prodi.store') }}" method="POST">
+        @csrf
+        <div class="mb-3">
+            <label for="nama_prodi" class="form-label">Nama Prodi</label>
+            <input type="text" class="form-control" id="nama_prodi" name="nama_prodi" value="{{ old('nama_prodi') }}" required>
+            @error('nama_prodi')
                 <div class="text-danger">{{ $message }}</div>
             @enderror
         </div>
-        <div class="form-group">
-            <label for="singkatan">Singkatan</label>
-            <input type="text" name="singkatan" class="form-control" value="{{ old('singkatan') }}">
+        <div class="mb-3">
+            <label for="singkatan" class="form-label">Singkatan</label>
+            <input type="text" class="form-control" id="singkatan" name="singkatan" value="{{ old('singkatan') }}" maxlength="2" required>
             @error('singkatan')
                 <div class="text-danger">{{ $message }}</div>
             @enderror
         </div>
-        <div class="form-group">
-            <label for="dekan">Nama Dekan</label>
-            <input type="text" name="dekan" class="form-control" value="{{ old('dekan') }}">
-            @error('dekan')
+        <div class="mb-3">
+            <label for="kaprodi" class="form-label">Nama Kaprodi</label>
+            <input type="text" class="form-control" id="kaprodi" name="kaprodi" value="{{ old('kaprodi') }}" maxlength="30" required>
+            @error('kaprodi')
                 <div class="text-danger">{{ $message }}</div>
             @enderror
         </div>
-        <button type="submit" class="btn btn-primary mt-3">Simpan</button>
+        <div class="mb-3">
+            <label for="fakultas_id" class="form-label">Fakultas</label>
+            <select class="form-select" id="fakultas_id" name="fakultas_id" required>
+                <option value="" disabled selected>Pilih Fakultas</option>
+                @foreach ($fakultas as $f)
+                    <option value="{{ $f->id }}" {{ old('fakultas_id') == $f->id ? 'selected' : '' }}>{{ $f->nama}}</option>
+                @endforeach
+            </select>
+            @error('fakultas_id')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
+        </div>
+        <button type="submit" class="btn btn-primary">Simpan</button>
     </form>
 @endsection
