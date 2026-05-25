@@ -9,6 +9,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('/fakultas', FakultasController::class);
+Route::resource('/fakultas', FakultasController::class)->parameters (['fakultas' =>'fakultas']);
 Route::resource('/periode', PeriodeController::class);
 Route::resource('/prodi', ProdiController::class);

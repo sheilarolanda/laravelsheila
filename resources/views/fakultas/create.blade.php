@@ -3,7 +3,8 @@
 @section('title', 'Tambah Fakultas')
 
 @section('content')
-    <form action="{{ route('fakultas.store') }}" method="post">
+    <form action="{{ route('fakultas.store') }}" method="POST">
+        @method('PUT')
         <div class="form-group">
             <label for="nama_fakultas">Nama Fakultas</label>
             <input type="text" name="nama_fakultas" class="form-control" value="{{ old('nama_fakultas') }}">
