@@ -32,15 +32,15 @@ class ProdiController extends Controller
     public function store(Request $request)
     {
         $input = $request->validate([
-            'nama'=>'required|unique:prodis',
-            'Singkatan'=>'required|max:2',
-            'kaprodi'=>'required',
-            'fakultas_id'=>'required'
-        ]);
-        //simpan data ke tabel
-        prodi::create($input);
-        //redirect ke halaman index prodi
-        return redirect()->route('prodi.index');
+        'nama_prodi' => 'required|unique:prodis',
+        'singkatan' => 'required|max:2',
+        'kaprodi' => 'required',
+        'fakultas_id' => 'required|exists:fakultas,id',
+    ]);
+
+    Prodi::create($input);
+
+    return redirect()->route('prodi.index')->with('success', 'Data prodi berhasil disimpan');
     }
 
     /**

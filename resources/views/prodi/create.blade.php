@@ -29,12 +29,12 @@
                 <div class="text-danger">{{ $message }}</div>
             @enderror
         </div>
-        <div class="mb-3">
+         <div class="form-group">
             <label for="fakultas_id" class="form-label">Fakultas</label>
-            <select class="form-select" id="fakultas_id" name="fakultas_id" required>
-                <option value="" disabled selected>Pilih Fakultas</option>
-                @foreach ($fakultas as $f)
-                    <option value="{{ $f->id }}" {{ old('fakultas_id') == $f->id ? 'selected' : '' }}>{{ $f->nama}}</option>
+            <select name="fakultas_id" class="form-control">
+                <option value="">Pilih Fakultas</option>
+                @foreach($fakultas as $item)
+                    <option value="{{ $item->id }}" {{ old('fakultas_id') == $item->id ? 'selected' : '' }}>{{ $item->nama_fakultas }}</option>
                 @endforeach
             </select>
             @error('fakultas_id')
