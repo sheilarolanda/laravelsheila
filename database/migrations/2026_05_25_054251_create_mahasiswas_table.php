@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('npm',11)->unique;
             $table->string('nama',50);
-            $table->foreign('prodi_id')->constrained()->onDelete('restrict');
+            $table->unsignedBigInteger('prodi_id');
+            $table->foreign('prodi_id') ->references('id')->on('prodis')->onDelete('restrict');
             $table->string('foto',100)->nullable();
             $table->timestamps();
         });
