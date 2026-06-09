@@ -19,11 +19,11 @@ class DashboardController extends Controller
         JOIN prodis p ON m.prodi_id = p.id
         GROUP BY p.nama_prodi');
 
-        $jumlahAngkatan = DB::select("SELECT CONCAT('20', SUBSTRING(npm, 1, 2)) as tahun_angkatan, COUNT(*) as jumlah 
-        FROM laravel.mahasiswas 
-        GROUP BY tahun_angkatan
-        ORDER BY tahun_angkatan ASC");
+        // $jumlahAngkatan = DB::select("SELECT CONCAT('20', SUBSTRING(npm, 1, 2)) as tahun_angkatan, COUNT(*) as jumlah 
+        // FROM laravel.mahasiswas 
+        // GROUP BY tahun_angkatan
+        // ORDER BY tahun_angkatan ASC");
 
-        return view('dashboard', compact('jumlahMahasiswa', 'jumlahAngkatan'));
+        return view('dashboard-adminlte', compact('grafikmhs'));
     }
 }
